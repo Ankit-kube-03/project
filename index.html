@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 4 Months, My Love ❤️</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      padding: 30px;
+      color: #2c2c2c;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.8em;
+      color: #d62828;
+      animation: fadeIn 2s ease-in-out;
+    }
+    p {
+      font-size: 1.3em;
+      line-height: 1.6;
+    }
+    .heart {
+      font-size: 60px;
+      animation: heartbeat 1s infinite;
+      margin: 20px 0;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.3); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .button:hover {
+      background: #e63950;
+    }
+    #surprise {
+      margin-top: 20px;
+      display: none;
+      font-size: 1.4em;
+      color: #6a040f;
+      font-weight: bold;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffb3c1; }
+      to { text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d; }
+    }
+    /* Falling flowers */
+    .flower {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy 4 Months, My Love ❤️</h1>
+  <p class="heart">💖</p>
+
+  <p>
+    My love, even though distance keeps us apart, nothing can stop my heart from beating for you.  
+    These past 4 months have been the most beautiful part of my life, all because of you.  
+    You are my safe place, my happiness, my dream come true.  
+  </p>
+  <p>
+    One day, we’ll look back at this distance and smile, knowing our love was stronger than miles.  
+    Until then, remember: every sunrise reminds me of your smile, and every night I fall asleep thinking of you.  
+    I love you endlessly. 💕
+  </p>
+
+  <button class="button" onclick="showSurprise()">
+    Click for a Surprise 💝
+  </button>
+
+  <p id="surprise">
+    🌹 My love, you are the best part of my life.  
+    💕 Every heartbeat whispers your name.  
+    🌸 You are my today, my tomorrow, and my forever.  
+    💖 No matter the distance, my soul belongs to you.  
+  </p>
+
+  <script>
+    function showSurprise() {
+      document.getElementById('surprise').style.display = 'block';
+
+      // Generate falling flowers
+      for (let i = 0; i < 20; i++) {
+        let flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.innerHTML = ["🌸","🌹","💐","🌷","🌺"][Math.floor(Math.random()*5)];
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+        flower.style.fontSize = (20 + Math.random() * 20) + "px";
+        document.body.appendChild(flower);
+
+        setTimeout(() => { flower.remove(); }, 8000);
+      }
+    }
+  </script>
+</body>
+</html>
