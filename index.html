@@ -8,99 +8,113 @@
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      { height: 100vh;
-      background: linear-gradient(135deg, #ffeef4 0%, #ffb6d9 50%, #ff8fab 100%);
+      height: 100vh;
+      background: linear-gradient(135deg, #fff5f9 0%, #ffb6d9 50%, #ff8fab 100%);
       font-family: 'Playfair Display', serif;
       color: #333;
       overflow: hidden;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .container {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
       text-align: center;
       width: 90%;
-      max-width: 700px;
+      max-width: 720px;
+      padding: 20px;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 6.5rem;
+      font-size: 7rem;
       color: #d63076;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       text-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
 
     h2 {
       font-size: 2.8rem;
-      color: #c51a66;
-      margin-bottom: 40px;
+      color: #c2185b;
+      margin-bottom: 50px;
+      font-weight: 500;
     }
 
     .card {
-      background: rgba(255,255,255,0.85);
-      padding: 50px 40px;
-      border-radius: 25px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.92);
+      padding: 60px 50px;
+      border-radius: 30px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+      backdrop-filter: blur(12px);
     }
 
     .letter {
-      font-size: 1.55rem;
-      line-height: 2.3rem;
+      font-size: 1.58rem;
+      line-height: 2.4rem;
       color: #444;
+      margin: 30px 0;
     }
 
     .heart {
-      font-size: 4.5rem;
+      font-size: 5rem;
       color: #e91e63;
-      margin: 40px 0;
-      animation: softbeat 2s infinite;
+      margin: 45px 0;
+      animation: softbeat 2.2s infinite ease-in-out;
     }
 
     @keyframes softbeat {
-      0%,100% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
       50% { transform: scale(1.15); }
     }
 
     .sign {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.8rem;
+      font-size: 4.2rem;
       color: #d63076;
-      margin: 50px 0 30px;
+      margin: 60px 0 40px;
     }
 
     button {
-      padding: 16px 60px;
-      font-size: 1.6rem;
+      padding: 18px 70px;
+      font-size: 1.7rem;
       background: #e91e63;
       color: white;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(233,30,99,0.4);
-      transition: 0.4s;
+      box-shadow: 0 12px 35px rgba(233,30,99,0.4);
+      transition: all 0.4s ease;
     }
 
     button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(233,30,99,0.5);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(233,30,99,0.5);
     }
 
+    /* Real rose petals - no text */
     .petal {
-      position: absolute;
-      font-size: 2rem;
-      color: #ff69b4;
+      position: fixed;
+      font-size: 2.4rem;
       pointer-events: none;
-      animation: drift 12s linear infinite;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: -1;
     }
 
-    @keyframes drift {
-      0% { transform: translateY(-100px) translateX(0) rotate(0deg); }
-      100% { transform: translateY(110vh) translateX(100px) rotate(360deg); opacity: 0; }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) translateX(-50px) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% {
+        transform: translateY(110vh) translateX(80px) rotate(720deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -118,42 +132,48 @@
         Seven months of falling deeper every single day.</p>
         <p>You make every moment better just by being you.</p>
         <p>I’m so grateful you chose me — and I’ll keep choosing you forever.</p>
-        <div class="heart">♡</div>
-        <p>I love you more than yesterday,<br>and I’ll love you even more tomorrow.</p>
+        <div class="heart">Heart</div>
+        <p>I love you more my Baby<br></p>
       </div>
 
       <div class="sign">
-        Forever yours,<br>kit
+        Forever yours,<br>Kit
       </div>
 
-      <button onclick="showLove()">Click here if you love me too ♡</button>
+      <button onclick="showLove()">Click if you love me too ♡</button>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script>
-    // Soft falling petals
-    setInterval(() => {
+    // Beautiful falling rose petals (real petals, no text)
+    function createPetal() {
       const p = document.createElement("div");
       p.classList.add("petal");
-      p.innerText = "Rose";
+      p.innerHTML = "Rose";  // Rose petal symbol
       p.style.left = Math.random() * 100 + "vw";
-      p.style.animationDuration = Math.random() * 8 + 10 + "s";
+      p.style.animationDuration = (Math.random() * 10 + 12) + "s";
+      p.style.animationDelay = Math.random() * 5 + "s";
       document.body.appendChild(p);
-      setTimeout(() => p.remove(), 18000);
-    }, 600);
+      setTimeout(() => p.remove(), 25000);
+    }
 
-    // Gentle confetti when she clicks
+    // Start with a few petals, then keep them coming gently
+    for (let i = 0; i < 15; i++) createPetal();
+    setInterval(createPetal, 2000);
+
+    // Sweet confetti + message
     function showLove() {
       confetti({
-        particleCount: 200,
-        spread: 80,
+        particleCount: 250,
+        spread: 90,
         origin: { y: 0.6 },
-        colors: ['#e91e63', '#ff69b4', '#ffc0cb', '#ff8fab']
+        colors: ['#e91e63', '#ff69b4', '#ffc0cb', '#ff8fab', '#fadadd']
       });
+
       setTimeout(() => {
-        alert("I love you endlessly, baby. Happy 7 months ♡");
-      }, 800);
+        alert("I love you endlessly, baby. Happy 7 months — you're my whole world ♡");
+      }, 900);
     }
   </script>
 </body>
